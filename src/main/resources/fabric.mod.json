@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "Crossbow Enhanced",
   "description": "A fabric mod that simplifies using the vanilla crossbow",
-  "authors": ["marzeq"],
+  "authors": ["marzeq", "deventio7"],
   "contact": {
     "repo": "https://github.com/marzeq/crossbowenhanced"
   },
@@ -12,16 +12,10 @@
   "icon": "assets/crossbowenhanced/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": [
-      "me.marzeq.crossbowenhanced.CrossbowEnhanced"
-    ],
-    "modmenu": [
-      "me.marzeq.crossbowenhanced.config.ConfigScreen"
-    ]
+    "client": ["me.marzeq.crossbowenhanced.CrossbowEnhanced"],
+    "modmenu": ["me.marzeq.crossbowenhanced.config.ConfigScreen"]
   },
-  "mixins": [
-    "crossbowenhanced.mixins.json"
-  ],
+  "mixins": ["crossbowenhanced.mixins.json"],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
