@@ -47,6 +47,12 @@ public class ConfigScreen implements ModMenuApi {
                         .setSaveConsumer(v -> config.order = v).build()
                 )
                 .addEntry(entry
+                        .startBooleanToggle(Text.of("Include arrows in selection priority"), config.allowArrowSelection)
+                        .setDefaultValue(Defaults.allowArrowSelection)
+                        .setTooltip(Text.of("If there are stacks of arrows in the inventory, they are treated like fireworks when selecting ammo"))
+                        .setSaveConsumer(v -> config.allowArrowSelection = v).build()
+                )
+                .addEntry(entry
                         .startBooleanToggle(Text.of("Prioritise stacks with lower count"), config.prioritiseStacksWithLowerCount)
                         .setDefaultValue(Defaults.prioritiseStacksWithLowerCount)
                         .setTooltip(Text.of("If there is a stack with a lower count of fireworks, that would normally not be drawn from, take from it first"))

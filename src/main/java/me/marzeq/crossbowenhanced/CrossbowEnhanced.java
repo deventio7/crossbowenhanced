@@ -6,6 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.FireworksComponent;
 import net.minecraft.item.FireworkRocketItem;
+import net.minecraft.item.ArrowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import org.slf4j.Logger;
@@ -25,6 +26,14 @@ public class CrossbowEnhanced implements ClientModInitializer {
         LOGGER.info("Crossbow Enhanced initialized");
     }
 
+    public static boolean isValidAmmo(ItemStack itemStack) {
+        if (isFireworkWithEffects(itemStack)) {
+            return true;
+        }
+
+        return config.allowArrowSelection && isArrow(itemStack);
+    }
+
     public static boolean isFireworkWithEffects(ItemStack itemStack) {
         if (itemStack == null) return false;
 
@@ -33,6 +42,11 @@ public class CrossbowEnhanced implements ClientModInitializer {
         var component = (FireworksComponent) itemStack.get(DataComponentTypes.FIREWORKS);
 
         return component != null && !component.explosions().isEmpty();
+    }
+
+    public static boolean isArrow(ItemStack itemStack) {
+        if (itemStack == null) return false;
+        return (itemStack.getItem() instanceof ArrowItem);
     }
 
     public static boolean isCrossbowCharged(ItemStack itemStack) {

@@ -13,6 +13,7 @@ public class Config {
     public boolean autoShoot = Defaults.autoShoot;
     public ORDER order = Defaults.order;
     public boolean prioritiseStacksWithLowerCount = Defaults.prioritiseStacksWithLowerCount;
+    public boolean allowArrowSelection = Defaults.allowArrowSelection;
 
     private transient File file;
 
@@ -56,6 +57,7 @@ public class Config {
         fireworksInOffHand = Defaults.fireworksInOffHand;
         autoShoot = Defaults.autoShoot;
         order = Defaults.order;
+        allowArrowSelection = Defaults.allowArrowSelection;
         prioritiseStacksWithLowerCount = Defaults.prioritiseStacksWithLowerCount;
         save();
     }

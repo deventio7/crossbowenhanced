@@ -37,8 +37,8 @@ public class CrossbowDraw {
         }
 
 
-        if (crossbowInMainHand && CrossbowEnhanced.isFireworkWithEffects(offHandItemStack) ||
-                !crossbowInMainHand && CrossbowEnhanced.isFireworkWithEffects(handItemStack)) {
+        if (crossbowInMainHand && CrossbowEnhanced.isValidAmmo(offHandItemStack) ||
+                !crossbowInMainHand && CrossbowEnhanced.isValidAmmo(handItemStack)) {
             return;
         }
 
@@ -48,7 +48,7 @@ public class CrossbowDraw {
             return;
         }
 
-        int slot = findSlotWithMinFireworkCount(player);
+        int slot = findSlotWithMinAmmoCount(player);
         if (slot == -1) {
             return;
         }
@@ -65,7 +65,7 @@ public class CrossbowDraw {
     }
 
     @Unique
-    private int findSlotWithMinFireworkCount(ClientPlayerEntity player) {
+    private int findSlotWithMinAmmoCount(ClientPlayerEntity player) {
         int slot = -1;
         int minValue = Integer.MAX_VALUE;
 
@@ -76,7 +76,7 @@ public class CrossbowDraw {
         for (int i = start; i != end; i += step) {
             var itemStack = player.getInventory().getStack(i);
 
-            if (CrossbowEnhanced.isFireworkWithEffects(itemStack)) {
+            if (CrossbowEnhanced.isValidAmmo(itemStack)) {
                 if (!CrossbowEnhanced.config.prioritiseStacksWithLowerCount) {
                     return i;
                 }
